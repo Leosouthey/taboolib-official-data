@@ -41,30 +41,30 @@ export async function GET(
       ...data,
     });
   }, {});
+  let content: { name: string; title: string }[];
   switch (component) {
     case "platforms":
-      return Response.json({
-        categories: platformsCategories,
-        components: filesMeta,
-      });
+      content = platformsCategories;
+      break;
     case "modules":
-      return Response.json({
-        categories: modulesCategories,
-        components: filesMeta,
-      });
+      content = modulesCategories;
+      break;
     case "expansions":
-      return Response.json({
-        categories: expansionsCategories,
-        components: filesMeta,
-      });
+      content = expansionsCategories;
+      break;
     case "templates":
-      return Response.json({
-        categories: templatesCategories,
-        components: filesMeta,
-      });
+      content = templatesCategories;
+      break;
     default:
-      return Response.json({
-        components,
-      });
+      content = [];
   }
+  const temp = JSON.parse(JSON.stringify(content));
+  temp.unshift({
+    name: "all",
+    title: "所有",
+  });
+  return Response.json({
+    categories: temp,
+    components: filesMeta,
+  });
 }
