@@ -1,7 +1,7 @@
 ---
-title: Bukkit 平台
+title: Bungee 平台
 type: platforms
-description: 为 Bukkit 平台提供支持
+description: 为 Bungee 平台提供支持
 source: https://github.com/...
 categories: [single-platform]
 ---
@@ -10,7 +10,7 @@ categories: [single-platform]
 
 ```
 taboolib {
-    install("platforms-bukkit")
+    install("platforms-bungee")
 }
 ```
 

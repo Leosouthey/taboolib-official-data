@@ -1,14 +1,22 @@
 [
-	{
-		"name": "utils",
-		"title": "工具"
-	},
-	{
-		"name": "data",
-		"title": "数据"
-	},
-	{
-		"name": "misc",
-		"title": "杂项"
-	}
+  {
+    "name": "essentials",
+    "title": "基础"
+  },
+  {
+    "name": "info",
+    "title": "信息"
+  },
+  {
+    "name": "utils",
+    "title": "工具"
+  },
+  {
+    "name": "data",
+    "title": "数据"
+  },
+  {
+    "name": "misc",
+    "title": "杂项"
+  }
 ]
