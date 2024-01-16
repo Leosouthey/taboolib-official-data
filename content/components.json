@@ -1,0 +1,22 @@
+[
+	{
+		"name": "platforms",
+		"title": "平台",
+		"color": "#45FFCA"
+	},
+	{
+		"name": "modules",
+		"title": "模块",
+		"color": "#FFB6D9"
+	},
+	{
+		"name": "expansions",
+		"title": "扩展",
+		"color": "#AEE2FF"
+	},
+	{
+		"name": "templates",
+		"title": "模板",
+		"color": "#FF8787"
+	}
+]
