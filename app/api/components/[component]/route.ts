@@ -2,10 +2,7 @@ import components from "@/content/components.json";
 import * as fs from "fs";
 import * as path from "path";
 import matter from "gray-matter";
-import platformsCategories from "@/content/platforms/categories.json";
-import modulesCategories from "@/content/modules/categories.json";
-import expansionsCategories from "@/content/expansions/categories.json";
-import templatesCategories from "@/content/templates/categories.json";
+import { getCategories } from "@/app/utils/category";
 
 function getFiles(dir: string) {
   const files: any[] = [];
@@ -41,23 +38,7 @@ export async function GET(
       ...data,
     });
   }, {});
-  let content: { name: string; title: string }[];
-  switch (component) {
-    case "platforms":
-      content = platformsCategories;
-      break;
-    case "modules":
-      content = modulesCategories;
-      break;
-    case "expansions":
-      content = expansionsCategories;
-      break;
-    case "templates":
-      content = templatesCategories;
-      break;
-    default:
-      content = [];
-  }
+  let content: { name: string; title: string }[] = getCategories(component);
   const temp = JSON.parse(JSON.stringify(content));
   temp.unshift({
     name: "all",
