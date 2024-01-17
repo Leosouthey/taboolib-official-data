@@ -1,7 +1,7 @@
-import components from "@/content/components.json";
+import { getComponents } from "@/app/utils/object";
 
 export async function GET() {
-  const temp = JSON.parse(JSON.stringify(components));
+  const temp = JSON.parse(JSON.stringify(getComponents()));
   temp.unshift({
     name: "all",
     title: "所有",

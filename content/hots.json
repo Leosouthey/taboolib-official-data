@@ -1,0 +1,18 @@
+[
+  {
+    "component": "platforms",
+    "name": "platform-bukkit"
+  },
+  {
+    "component": "modules",
+    "name": "module-ui"
+  },
+  {
+    "component": "modules",
+    "name": "module-database"
+  },
+  {
+    "component": "expansions",
+    "name": "command-helper"
+  }
+]

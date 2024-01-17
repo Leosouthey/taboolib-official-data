@@ -1,6 +1,6 @@
 ---
 title: 指令帮助模块
-type: expansions
+component: expansions
 description: 快速生成你的插件指令帮助。
 source: https://github.com/...
 categories: []

@@ -1,6 +1,6 @@
 ---
 title: NMS 模块
-type: modules
+component: modules
 description: 提供了一些必要的 Bukkit 平台服务端逆向工具。
 source: https://github.com/...
 categories: [utils]

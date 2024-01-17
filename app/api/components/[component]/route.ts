@@ -1,8 +1,7 @@
-import components from "@/content/components.json";
 import * as fs from "fs";
 import * as path from "path";
 import matter from "gray-matter";
-import { getCategories } from "@/app/utils/category";
+import { getCategories, getMetaData } from "@/app/utils/object";
 
 function getFiles(dir: string) {
   const files: any[] = [];
@@ -32,12 +31,9 @@ export async function GET(
   }
   const filesMeta: {}[] = [];
   files.forEach((file: any) => {
-    const { data } = matter(fs.readFileSync(file));
-    filesMeta.push({
-      name: path.basename(file, ".md"),
-      ...data,
-    });
+    filesMeta.push(getMetaData(file));
   }, {});
+
   let content: { name: string; title: string }[] = getCategories(component);
   const temp = JSON.parse(JSON.stringify(content));
   temp.unshift({

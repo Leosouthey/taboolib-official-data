@@ -1,6 +1,6 @@
 ---
 title: NMS Util 模块
-type: modules
+component: modules
 description: 作为 nms 模块的扩展，在基础上增加大量工具。
 source: https://github.com/...
 categories: [utils, misc]

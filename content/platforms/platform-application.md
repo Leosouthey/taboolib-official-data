@@ -1,6 +1,6 @@
 ---
 title: Application 平台
-type: platforms
+component: platforms
 description: 为你自己的应用提供支持
 source: https://github.com/...
 categories: [cross-platform]

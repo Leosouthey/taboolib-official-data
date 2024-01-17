@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import matter from "gray-matter";
-import { getCategoriesByNames } from "@/app/utils/category";
+import { getCategoriesByNames, getComponentByName } from "@/app/utils/object";
 
 export async function GET(
   request: Request,
@@ -15,6 +15,7 @@ export async function GET(
   );
   const { data, content } = matter(file);
   const temp = JSON.parse(JSON.stringify(data));
+  temp.component = getComponentByName(component);
   temp.categories = getCategoriesByNames(component, data.categories);
   return Response.json({ ...temp, content, name });
 }

@@ -1,6 +1,6 @@
 ---
 title: Porticus 模块
-type: modules
+component: modules
 description: Bukkit 与 BungeeCord 通讯工具，提供了相当方便的使用方式。
 source: https://github.com/...
 categories: [utils, info]

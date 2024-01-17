@@ -1,6 +1,6 @@
 ---
 title: Common 模块
-type: modules
+component: modules
 description: 基础模块，你无法删去它
 source: https://github.com/...
 categories: [essentials]

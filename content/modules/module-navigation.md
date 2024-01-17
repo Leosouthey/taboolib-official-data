@@ -1,6 +1,6 @@
 ---
 title: Navigation 模块
-type: modules
+component: modules
 description: Bukkit 平台无实体寻路工具，基于原版 r-star 算法。
 source: https://github.com/...
 categories: [utils, misc]
