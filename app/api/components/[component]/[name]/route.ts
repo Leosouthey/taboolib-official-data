@@ -11,9 +11,10 @@ export async function GET(
   const component = params.component;
   const name = params.name;
   const file = fs.readFileSync(
-    path.join(cwd, "content", component, name + ".md")
+    path.resolve(cwd, "content", component, name + ".md")
   );
   const { data, content } = matter(file);
-  data.categories = getCategoriesByNames(component, data.categories);
-  return Response.json({ ...data, content, name });
+  const temp = JSON.parse(JSON.stringify(data));
+  temp.categories = getCategoriesByNames(component, data.categories);
+  return Response.json({ ...temp, content, name });
 }
