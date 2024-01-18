@@ -124,7 +124,7 @@ export function getMetaData(file: string, getContent: boolean = true) {
   return {
     ...data,
     name: path.basename(file, ".md"),
-    component: getComponentTypesByName(data.component),
+    type: getComponentTypesByName(data.type),
     ...(getContent && { content }),
   };
 }
