@@ -23,10 +23,6 @@ categories: [single-platform]
 
 #### 四级标题
 
-##### 五级标题
-
-###### 六级标题
-
 ```
 taboolib {
     install("platforms-bukkit")
