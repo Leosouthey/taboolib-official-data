@@ -1,6 +1,6 @@
 ---
 title: Bungee 平台
-component: platforms
+type: platforms
 description: 为 Bungee 平台提供支持
 source: https://github.com/...
 categories: [single-platform]

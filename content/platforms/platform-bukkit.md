@@ -1,6 +1,6 @@
 ---
 title: Bukkit 平台
-component: platforms
+type: platforms
 description: 为 Bukkit 平台提供支持
 links:
   {

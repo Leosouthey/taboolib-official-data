@@ -110,7 +110,7 @@ export function getComponentByTypeAndName(type: string, name: string) {
   );
   const { data, content } = matter(file);
   const temp = JSON.parse(JSON.stringify(data));
-  temp.component = getComponentTypesByName(type);
+  temp.type = getComponentTypesByName(type);
   temp.categories = getCategoriesByNames(type, data.categories);
   return { ...temp, content, name };
 }

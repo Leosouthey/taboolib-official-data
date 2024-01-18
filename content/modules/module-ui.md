@@ -1,6 +1,6 @@
 ---
 title: UI 模块
-component: modules
+type: modules
 description: Bukkit 平台的箱子菜单构建工具，提供了数种不同类型的结构。
 source: https://github.com/...
 categories: [utils]

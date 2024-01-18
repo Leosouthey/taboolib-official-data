@@ -1,6 +1,6 @@
 ---
 title: Database 模块
-component: modules
+type: modules
 description: 数据库工具，基于 HikariCP 连接池。不同于 Exposed 框架，不会将数据映射到对象。
 links:
   {

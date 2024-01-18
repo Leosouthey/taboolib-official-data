@@ -1,6 +1,6 @@
 ---
 title: Chat 模块
-component: modules
+type: modules
 description: 全平台 Raw 信息构建工具与 1.16 RGB 颜色转换工具。
 links:
   {
