@@ -1,33 +1,32 @@
-import platformsCategories from "@/content/platforms/categories.json";
-import modulesCategories from "@/content/modules/categories.json";
-import expansionsCategories from "@/content/expansions/categories.json";
-import templatesCategories from "@/content/templates/categories.json";
+// import platformsCategories from "@/content/platforms/categories.json";
+// import modulesCategories from "@/content/modules/categories.json";
+// import expansionsCategories from "@/content/expansions/categories.json";
+// import templatesCategories from "@/content/templates/categories.json";
 import componentTypes from "@/content/types.json";
 import hots from "@/content/hots.json";
 import matter from "gray-matter";
 import * as fs from "fs";
 import path from "path";
 
-export function getCategories(component: string) {
-  switch (component) {
-    case "platforms":
-      return platformsCategories;
-    case "modules":
-      return modulesCategories;
-    case "expansions":
-      return expansionsCategories;
-    case "templates":
-      return templatesCategories;
-    default:
-      return [];
+export function getCategories(type: string) {
+  if (type === "all") {
+    return [];
   }
+  const cwd = process.cwd();
+  const file = fs.readFileSync(
+    path.resolve(cwd, "content", type, "categories.json")
+  );
+  const categories = JSON.parse(file.toString());
+  return categories;
 }
 
 export function getCategoriesByNames(component: string, names: string[]) {
   const categories: { name: string; title: string }[] = [];
   const allCategories = getCategories(component);
   names.forEach((name) => {
-    const category = allCategories.find((category) => category.name === name);
+    const category = allCategories.find(
+      (category: { name: string }) => category.name === name
+    );
     if (category) {
       categories.push(category);
     }
