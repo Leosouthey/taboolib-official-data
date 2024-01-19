@@ -45,7 +45,7 @@ async function writeSrcFile(
   writeLine(contents, "}", 1);
   writeLine(contents, "}", 0);
   zip.file(
-    path.resolve(
+    path.join(
       "src",
       "main",
       "kotlin",
