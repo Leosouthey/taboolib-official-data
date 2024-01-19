@@ -45,11 +45,13 @@ async function writeSrcFile(
   writeLine(contents, "}", 1);
   writeLine(contents, "}", 0);
   zip.file(
-    "src/main/kotlin/" +
-      project.package.replace(".", "/") +
-      "/" +
-      project.name +
-      ".kt",
+    path.resolve(
+      "src",
+      "main",
+      "kotlin",
+      ...project.package.split("."),
+      project.name + ".kt"
+    ),
     contents.join("")
   );
 }
@@ -74,7 +76,7 @@ async function writeBuildFile(zip: JSZip, components: any[]) {
     1
   );
   const tabooLibPluginVersion = await getTabooLibPluginVersion();
-  const tabooLibPlugin = `\n    id("io.izzel.taboolib") version "${tabooLibPluginVersion}"`;
+  const tabooLibPlugin = `id("io.izzel.taboolib") version "${tabooLibPluginVersion}"`;
   writeLine(contents, tabooLibPlugin, 1);
   writeLine(contents, "}", 0);
   writeLine(contents, "", 0);
@@ -86,8 +88,8 @@ async function writeBuildFile(zip: JSZip, components: any[]) {
   const version = await getTabooLibVersion();
   writeLine(contents, `version = "${version}"`, 1);
   writeLine(contents, "}", 0);
-
-  writeLines(contents, ["", "repositories {"], 0);
+  writeLine(contents, "", 0);
+  writeLine(contents, "repositories {", 0);
   writeLine(contents, "mavenCentral()", 1);
   components.forEach((component) => {
     if (component.name === "platform-nukkit") {
