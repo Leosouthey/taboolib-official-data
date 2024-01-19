@@ -116,9 +116,11 @@ async function writeBuildFile(zip: JSZip, components: any[]) {
         1
       );
     }
-    writeLine(contents, `}`, 0);
-    writeLine(contents, "", 0);
-    writeLine(contents, "dependencies {", 0);
+  });
+  writeLine(contents, `}`, 0);
+  writeLine(contents, "", 0);
+  writeLine(contents, "dependencies {", 0);
+  components.forEach((component) => {
     if (component.name === "platform-bukkit") {
       writeLine(contents, `compileOnly("ink.ptms:nms-all:1.0.0")`, 1);
       writeLine(
@@ -159,56 +161,56 @@ async function writeBuildFile(zip: JSZip, components: any[]) {
         1
       );
     }
-    writeLines(
-      contents,
-      [`compileOnly(kotlin("stdlib"))`, `compileOnly(fileTree("libs"))`],
-      1
-    );
-    writeLine(contents, `}`, 0);
-    writeLine(contents, "", 0);
-    writeLine(contents, "tasks.withType<JavaCompile> {", 0);
-    writeLine(contents, `options.encoding = "UTF-8"`, 1);
-    writeLine(contents, "}", 0);
-    writeLine(contents, "", 0);
-    writeLine(
-      contents,
-      "tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {",
-      0
-    );
-    writeLine(contents, `kotlinOptions {`, 1);
-    writeLine(contents, `freeCompilerArgs = listOf("-Xjvm-default=all")`, 2);
-    writeLine(contents, `jvmTarget = "1.8"`, 2);
-    writeLine(contents, `}`, 1);
-    writeLine(contents, "}", 0);
-    writeLine(contents, "", 0);
-    writeLine(contents, "configure<JavaPluginConvention> {", 0);
-    writeLine(contents, `sourceCompatibility = JavaVersion.VERSION_1_8`, 1);
-    writeLine(contents, `targetCompatibility = JavaVersion.VERSION_1_8`, 1);
-    writeLine(contents, "}", 0);
-    writeLine(contents, "", 0);
-    let publishing = `\npublishing {
-    repositories {
-        maven {
-            url = uri("https://repo.tabooproject.org/repository/releases")
-            credentials {
-                username = project.findProperty("taboolibUsername").toString()
-                password = project.findProperty("taboolibPassword").toString()
-            }
-            authentication {
-                create<BasicAuthentication>("basic")
-            }
-        }
-    }
-    publications {
-        create<MavenPublication>("library") {
-            from(components["java"])
-            groupId = project.group.toString()
-        }
-    }
-}`;
-    writeLine(contents, publishing, 0);
-    writeToZip(contents, zip, "build.gradle.kts");
   });
+  writeLines(
+    contents,
+    [`compileOnly(kotlin("stdlib"))`, `compileOnly(fileTree("libs"))`],
+    1
+  );
+  writeLine(contents, `}`, 0);
+  writeLine(contents, "", 0);
+  writeLine(contents, "tasks.withType<JavaCompile> {", 0);
+  writeLine(contents, `options.encoding = "UTF-8"`, 1);
+  writeLine(contents, "}", 0);
+  writeLine(contents, "", 0);
+  writeLine(
+    contents,
+    "tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {",
+    0
+  );
+  writeLine(contents, `kotlinOptions {`, 1);
+  writeLine(contents, `freeCompilerArgs = listOf("-Xjvm-default=all")`, 2);
+  writeLine(contents, `jvmTarget = "1.8"`, 2);
+  writeLine(contents, `}`, 1);
+  writeLine(contents, "}", 0);
+  writeLine(contents, "", 0);
+  writeLine(contents, "configure<JavaPluginConvention> {", 0);
+  writeLine(contents, `sourceCompatibility = JavaVersion.VERSION_1_8`, 1);
+  writeLine(contents, `targetCompatibility = JavaVersion.VERSION_1_8`, 1);
+  writeLine(contents, "}", 0);
+  writeLine(contents, "", 0);
+  const publishing = `publishing {
+      repositories {
+          maven {
+              url = uri("https://repo.tabooproject.org/repository/releases")
+              credentials {
+                  username = project.findProperty("taboolibUsername").toString()
+                  password = project.findProperty("taboolibPassword").toString()
+              }
+              authentication {
+                  create<BasicAuthentication>("basic")
+              }
+          }
+      }
+      publications {
+          create<MavenPublication>("library") {
+              from(components["java"])
+              groupId = project.group.toString()
+          }
+      }
+  }`;
+  writeLine(contents, publishing, 0);
+  writeToZip(contents, zip, "build.gradle.kts");
 }
 
 async function writeSettingsFile(zip: JSZip, project: { name: string }) {
